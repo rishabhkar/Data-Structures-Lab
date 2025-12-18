@@ -1,0 +1,69 @@
+package com.collections.implementation.graphs;
+
+public class AdjacencyMatrix {
+
+  int[][] matrix;
+  int rowsLength;
+  int columnLength;
+
+  public AdjacencyMatrix() {
+    this.matrix = new int[10][10];
+    this.rowsLength = 10;
+    this.columnLength = 10;
+  }
+
+  public int[][] designMatrixForUndirectedGraph(int[][] graph) {
+
+    int max = 0;
+
+    for (int i = 0; i < graph.length; i++) {
+      for (int j = 0; j < graph[0].length; j++) {
+        max = Math.max(max, graph[i][j]);
+      }
+    }
+
+    this.matrix = new int[max + 1][max + 1];
+    this.rowsLength = this.columnLength = max + 1;
+
+    for (int[] row : graph) {
+      if (row.length == 2) {
+        matrix[row[0]][row[1]] = 1;
+        matrix[row[1]][row[0]] = 1;
+      }
+    }
+    printMatrix();
+    return matrix;
+  }
+
+  public void printMatrix() {
+
+    for (int[] rows : this.matrix) {
+      for (int element : rows) {
+        System.out.print(element + "   ");
+      }
+      System.out.println(" ");
+    }
+  }
+
+  public int[][] designMatrixForDirectedGraph(int[][] graph) {
+
+    int max = 0;
+
+    for (int i = 0; i < graph.length; i++) {
+      for (int j = 0; j < graph[0].length; j++) {
+        max = Math.max(max, graph[i][j]);
+      }
+    }
+
+    this.matrix = new int[max + 1][max + 1];
+    this.rowsLength = this.columnLength = max + 1;
+
+    for (int[] row : graph) {
+      if (row.length == 2) {
+        matrix[row[0]][row[1]] = 1;
+      }
+    }
+    printMatrix();
+    return matrix;
+  }
+}
