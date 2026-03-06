@@ -1,10 +1,9 @@
 package com.collections.implementation.list;
 
-import org.junit.jupiter.api.*;
-import org.springframework.boot.test.context.*;
-
 import java.io.*;
 import java.util.concurrent.*;
+import org.junit.jupiter.api.*;
+import org.springframework.boot.test.context.*;
 
 @SpringBootTest
 public class ArrayListTests {
