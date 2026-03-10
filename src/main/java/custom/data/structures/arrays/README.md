@@ -10,31 +10,37 @@ This folder is for **array structures implemented from scratch**.
 
 ## Covered topics
 
-- ⬜ Dynamic
-  - ⬜ definition
-  - ⬜ representation
-  - ⬜ creation
+- ✅ Dynamic Array
+  - ✅ definition
+  - ✅ representation
+  - ✅ creation
+  - ✅ add by index
+  - ✅ remove by index
+  - ✅ get element
+  - ✅ contains
+  - ✅ indexOf
+  - ✅ lastIndexOf
+  - ✅ clear
+  - ✅ fill
+  - ✅ copy array
+  - ✅ swap values
+  - ✅ count stored elements
+  - ✅ manual resizing logic
 - ⬜ Sparse Array
-  - ⬜ definition
   - ⬜ storage
   - ⬜ represent as arrays
   - ⬜ represent as linked list
   - ⬜ create sparse array
-- ⬜ Manual resizing logic as a dedicated array class in this folder
 
-## Current note
+## Current source mapping
 
-There is no standalone array implementation in this folder yet.
-
-Related code already exists in `src/main/java/custom/data/structures/list/`:
-- manual upsize logic
-- manual downsize logic
-- array-backed storage
+- `src/main/java/custom/data/structures/arrays/NonPrimitiveDynamic1DArray.java`
+- `src/main/java/custom/data/structures/arrays/Main.java`
+- `src/test/java/custom/data/structures/arrays/NonPrimitiveDynamic1DArrayTests.java`
 
 ## What will go here later
 
 Future content here can include:
-- custom dynamic array implementations
 - sparse array representations
-- resizing helpers
-- notes on memory layout and amortized growth
+- more resizing strategies
+- notes on memory layout and growth rules
