@@ -1,105 +1,157 @@
 # Data Structures Lab
 
-A long-term Java data structures repository split into two clear learning tracks:
+This repository is a Java practice space for learning data structures in two different ways:
 
-1. **`use-existing-data-structures/`** — practicing Java's built-in arrays, collections, and access patterns.
-2. **`custom-data-structures/`** — implementing data structures from scratch for deeper understanding and interview prep.
+1. **use existing data structures well**
+2. **build custom data structures from scratch**
 
-## Repository Goals
+That split is the main rule used to organise this project.
 
-This lab is organized to keep two different skills separate:
+## Repository split
 
-- **Using standard Java data structures well**
-  - choosing the right API
-  - understanding access patterns and trade-offs
-  - learning when to use which collection
-- **Building data structures from scratch**
-  - understanding internal representation
-  - implementing operations manually
-  - practicing core interview-style data structure design
+### 1. Use existing data structures
+Path:
+- `src/main/java/existing/data/structures/`
 
-## Top-Level Structure
+This side is for Java's built-in and standard-library data structures.
+It focuses on usage, access patterns, basic API understanding, and practical behaviour.
+
+### 2. Custom data structures
+Path:
+- `src/main/java/custom/data/structures/`
+
+This side is for handwritten implementations.
+It focuses on internal logic, node/array handling, edge cases, and interview-style practice.
+
+## Current folder structure
 
 ```text
 DataStructuresLab/
-├── use-existing-data-structures/
-│   ├── README.md
-│   ├── arrays/
-│   ├── lists/
-│   ├── queues-and-deques/
-│   └── maps/
-├── custom-data-structures/
-│   ├── README.md
-│   ├── arrays/
-│   ├── linked-lists/
-│   ├── stacks/
-│   ├── queues/
-│   ├── trees/
-│   ├── graphs/
-│   ├── hashing/
-│   └── advanced-structures/
-└── src/
-    ├── main/java/com/collections/implementation/
-    └── test/java/com/collections/implementation/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── custom/data/structures/
+│   │   │   │   ├── arrays/
+│   │   │   │   ├── linkedLists/
+│   │   │   │   ├── list/
+│   │   │   │   ├── stacks/
+│   │   │   │   ├── queues/
+│   │   │   │   ├── trees/
+│   │   │   │   ├── graphs/
+│   │   │   │   ├── hashing/
+│   │   │   │   ├── Main.java
+│   │   │   │   └── README.md
+│   │   │   └── existing/data/structures/
+│   │   │       ├── arrays/
+│   │   │       ├── lists/
+│   │   │       ├── maps/
+│   │   │       ├── queuesanddeques/
+│   │   │       └── README.md
+│   │   └── resources/
+│   └── test/
+│       └── java/
+│           ├── custom/data/structures/
+│           └── existing/data/structures/
+├── pom.xml
+└── README.md
 ```
 
-## Track Guide
+## What is implemented right now
 
-### 1) `use-existing-data-structures`
+## Existing data structures track
 
-This track is for **Java built-in and standard-library usage**.
+Implemented:
+- ✅ native Java arrays
+- ✅ non-primitive static 1D array wrapper
+- ✅ non-primitive static 2D array wrapper
 
-It covers:
-- native Java arrays
-- Java `List` usage such as `ArrayList`, `LinkedList`, and `CopyOnWriteArrayList`
-- queue APIs such as `Deque`, `PriorityQueue`, and `BlockingQueue`
-- Java `Map` types such as `HashMap`, `LinkedHashMap`, `TreeMap`, `NavigableMap`, `ConcurrentHashMap`, `WeakHashMap`, `IdentityHashMap`, and `EnumMap`
+Planned but not implemented yet:
+- ⬜ Java `List` usage
+- ⬜ Java `Map` usage
+- ⬜ Java queue and deque usage
 
-This side is about **usage, APIs, performance, and practical selection**, not handwritten reimplementation.
+Main source folder in use:
+- `src/main/java/existing/data/structures/arrays/`
 
-### 2) `custom-data-structures`
+Main test folder in use:
+- `src/test/java/existing/data/structures/arrays/`
 
-This track is for **handwritten implementations from scratch**.
+## Custom data structures track
 
-It covers:
-- dynamic arrays and sparse arrays
-- linked lists
-- custom stacks and queues
-- trees, BSTs, AVL trees, heaps, and tries
-- graph representations and traversals
-- hash tables, probing strategies, chaining, and rehashing
-- advanced structures such as DSU, skip list, Bloom filter, caches, suffix structures, and related interview-prep topics
+Implemented:
+- ✅ custom dynamic array
+- ✅ custom array-backed list
+- ✅ singly linked list
+- ✅ doubly linked list
+- ✅ singly circular linked list
+- ✅ doubly circular linked list
+- ✅ fixed stack
+- ✅ linked-list stack
+- ✅ simple queue
+- ✅ deque
+- ✅ binary tree node structure
+- ✅ binary search tree insert
+- ✅ binary search tree search
+- ✅ binary search tree delete
+- ✅ adjacency matrix representation
+- ✅ adjacency list representation
+- ✅ breadth-first search
+- ✅ depth-first search
 
-This side is about **internal mechanics, manual implementation, and design trade-offs**.
+Planned but not implemented yet:
+- ⬜ hashing structures
+- ⬜ AVL tree
+- ⬜ trie
+- ⬜ circular queue / ring buffer
+- ⬜ advanced specialised structures
 
-## How Existing Source Code Maps During Migration
+Main source folders in use:
+- `src/main/java/custom/data/structures/arrays/`
+- `src/main/java/custom/data/structures/list/`
+- `src/main/java/custom/data/structures/linkedLists/`
+- `src/main/java/custom/data/structures/stacks/`
+- `src/main/java/custom/data/structures/queues/`
+- `src/main/java/custom/data/structures/trees/`
+- `src/main/java/custom/data/structures/graphs/`
 
-The current Java implementation code under `src/main/java/com/collections/implementation/` is still the active codebase. Conceptually, it maps into the new structure like this:
+Main test folders in use:
+- `src/test/java/custom/data/structures/arrays/`
+- `src/test/java/custom/data/structures/list/`
+- `src/test/java/custom/data/structures/linkedLists/`
+- `src/test/java/custom/data/structures/stacks/`
+- `src/test/java/custom/data/structures/queues/`
+- `src/test/java/custom/data/structures/trees/`
+- `src/test/java/custom/data/structures/graphs/`
 
-- `src/main/java/com/collections/implementation/list/`
-  - custom dynamic-array style work belongs under `custom-data-structures/arrays/`
-  - future node-based list implementations belong under `custom-data-structures/linked-lists/`
-- `src/main/java/com/collections/implementation/stack/`
-  - belongs under `custom-data-structures/stacks/`
-- `src/main/java/com/collections/implementation/queue/`
-  - belongs under `custom-data-structures/queues/`
-- `src/main/java/com/collections/implementation/tree/`
-  - belongs under `custom-data-structures/trees/`
-- `src/main/java/com/collections/implementation/graphs/`
-  - belongs under `custom-data-structures/graphs/`
+## Folder notes
 
-For now, this restructure is **documentation-first**: the folders and README files define the long-term organization without changing Java packages or Maven source roots yet.
+- `custom/data/structures/arrays/` now owns the custom dynamic-array implementation.
+- `existing/data/structures/arrays/` is reserved for Java array usage work.
+- `custom/data/structures/linkedLists/` contains all linked-list implementations currently in the project.
+- `existing/data/structures/queuesanddeques/` uses a valid folder name without hyphens.
+- `hashing/`, `lists/`, `maps/`, and `queuesanddeques/` are still mostly planning folders at the moment.
 
-## Current Migration Notes
+## Test coverage notes
 
-- Keep `src/` as the working Maven source tree for now.
-- Use the new top-level folders as the canonical content map for future additions.
-- Do not treat `target/` as part of the learning structure.
-- When future refactors happen, move implementation-oriented content into the matching concept area intentionally rather than by package name alone.
+This repository now has test classes for:
+- existing arrays
+- custom dynamic arrays
+- custom linked lists
+- custom list
+- custom stacks
+- custom queues
+- custom trees
+- custom graphs
 
-## Build and Test
+Surefire test reports are generated under:
+- `target/surefire-reports/`
 
-All existing Maven and Spring Boot commands still run from the project root.
+## Build and run
+
+The packaged entry point used by the project is:
+- `custom.data.structures.Main`
+
+Common Maven commands:
 
 ```powershell
 mvn clean package
@@ -107,10 +159,22 @@ mvn test
 mvn spring-boot:run
 ```
 
-## Scope Control
+Run folder-specific demo classes directly from the IDE if needed:
+- `custom.data.structures.arrays.Main`
+- `custom.data.structures.list.Main`
+- `custom.data.structures.linkedLists.LinkedListsMain`
+- `custom.data.structures.stacks.Main`
+- `custom.data.structures.queues.Main`
+- `custom.data.structures.graphs.Main`
+- `custom.data.structures.trees.Main`
+- `existing.data.structures.arrays.ArraysMain`
 
-This repository structure is based on the provided data structures sheet.
+## Why this repository is organised this way
 
-- Trivial labels such as definition, overview, advantages, and formulas stay inside README sections.
-- Duplicate concepts are normalized instead of repeated across many folders.
-- Built-in usage and handwritten implementation stay separated unless a README explicitly explains the relationship.
+This project is meant to stay clean and long-term maintainable.
+
+The goal is to keep a clear difference between:
+- **using Java's existing data structures properly**
+- **understanding how those structures work by implementing them yourself**
+
+That makes the repository useful for revision, interview preparation, and step-by-step practice.

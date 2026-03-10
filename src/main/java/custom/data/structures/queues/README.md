@@ -36,7 +36,7 @@ This folder is for **queue-family structures implemented from scratch**.
 
 ## Normalization note
 
-Java `Deque`, `PriorityQueue`, and `BlockingQueue` usage belongs under `use-existing-data-structures/queues-and-deques/`. This folder is only for handwritten queue-family implementations.
+Java `Deque`, `PriorityQueue`, and `BlockingQueue` usage belongs under `use-existing-data-structures/queuesanddeques/`. This folder is only for handwritten queue-family implementations.
 
 ## Current source mapping
 

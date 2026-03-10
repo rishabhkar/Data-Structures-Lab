@@ -1,4 +1,4 @@
-package existing.data.structures.arrays;
+package custom.data.structures.arrays;
 
 import java.lang.reflect.*;
 
@@ -289,4 +289,3 @@ public class NonPrimitiveDynamic1DArray<T> {
     return temp;
   }
 }
-

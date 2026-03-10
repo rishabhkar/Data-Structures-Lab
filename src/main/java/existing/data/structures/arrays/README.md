@@ -27,7 +27,7 @@ This folder is for **native Java array usage** as a language-level structure.
   - ✅ copying arrays
   - ✅ filling arrays
   - ✅ default values
-  - ✅ static vs dynamic allocation
+  - ⬜ static vs dynamic allocation as a custom structure topic
   - ⬜ use in algorithms
   - ✅ arrays of objects
 - ✅ Two-Dimensional

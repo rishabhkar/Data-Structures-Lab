@@ -34,13 +34,13 @@ Topics from the sheet that map here:
 
 ## What does not belong here
 
-This track does **not** contain handwritten implementations of arrays, linked lists, stacks, queues, trees, graphs, or hash tables. Those belong under `custom-data-structures/`.
+This track does **not** contain handwritten implementations of dynamic arrays, linked lists, stacks, queues, trees, graphs, or hash tables. Those belong under `custom-data-structures/`.
 
 ## Folder layout
 
 - ✅ `arrays/` — native Java arrays and array-oriented practice
 - ⬜ `lists/` — Java list interfaces and implementations
-- ⬜ `queues-and-deques/` — queue-related Java APIs
+- ⬜ `queuesanddeques/` — queue-related Java APIs
 - ⬜ `maps/` — Java map interfaces and implementations
 
 ## Notes on tree and graph work

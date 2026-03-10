@@ -25,7 +25,7 @@ There is no Java list usage code in this folder yet.
 
 ## What does not belong here
 
-Handwritten dynamic arrays, singly linked lists, doubly linked lists, and circular linked lists belong under `custom-data-structures/arrays/` or `custom-data-structures/linked-lists/`.
+Handwritten dynamic arrays, singly linked lists, doubly linked lists, and circular linked lists belong under `custom-data-structures/arrays/` or `custom-data-structures/linkedLists/`.
 
 ## What will go here later
 

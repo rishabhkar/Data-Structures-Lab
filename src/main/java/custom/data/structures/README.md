@@ -13,7 +13,12 @@ It focuses on:
 
 ## Current coverage
 
+- ✅ custom dynamic array in `arrays/`
 - ✅ custom array-backed list in `list/`
+- ✅ singly linked list
+- ✅ doubly linked list
+- ✅ singly circular linked list
+- ✅ doubly circular linked list
 - ✅ fixed size stack
 - ✅ linked-list stack
 - ✅ simple queue
@@ -23,25 +28,23 @@ It focuses on:
 - ✅ graph adjacency matrix builders
 - ✅ graph adjacency list builders
 - ✅ graph traversal with DFS and BFS
-- ⬜ array-specific structures in `arrays/`
-- ⬜ linked lists in `linked-lists/`
 - ⬜ hashing structures in `hashing/`
-- ⬜ advanced structures in `advanced-structures/`
 
 ## Folder layout
 
-- `arrays/` — array-specific custom structures and notes
-- `linked-lists/` — singly, doubly, and circular linked lists
+- `arrays/` — custom dynamic arrays and future sparse-array work
+- `linkedLists/` — singly, doubly, and circular linked lists
 - `list/` — current custom array-backed list implementation
-- `stacks/` — fixed, dynamic, and linked-list-backed stacks
+- `stacks/` — fixed and linked-list-backed stacks
 - `queues/` — simple queues, deques, circular queues, and ring-buffer work
 - `trees/` — tree families, BSTs, balancing, heaps, tries, and related structures
 - `graphs/` — graph representations, traversals, and graph algorithms
 - `hashing/` — custom hash tables and hashing strategies
-- `advanced-structures/` — specialized structures that do not fit elsewhere
 
 ## Current source mapping
 
+- `src/main/java/custom/data/structures/arrays/` — dynamic array code
+- `src/main/java/custom/data/structures/linkedLists/` — linked list code
 - `src/main/java/custom/data/structures/list/` — array-backed list code
 - `src/main/java/custom/data/structures/stacks/` — fixed and linked-list stack code
 - `src/main/java/custom/data/structures/queues/` — simple queue and deque code
@@ -51,7 +54,7 @@ It focuses on:
 ## What will go here later
 
 Future content here can include:
-- implementation classes
+- more implementation classes
 - supporting interfaces and node models
 - tests focused on correctness and edge cases
 - short README notes about invariants, complexity, and trade-offs

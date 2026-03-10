@@ -12,8 +12,9 @@ public class ArraysMain {
    */
   public static void main(String[] args) {
     runStaticOneDimensionalExample();
-    runDynamicOneDimensionalExample();
     runStaticTwoDimensionalExample();
+
+    System.out.println("Dynamic array examples now live in custom.data.structures.arrays.Main");
   }
 
   private static void runStaticOneDimensionalExample() {
@@ -35,27 +36,6 @@ public class ArraysMain {
     System.out.println("Index of B: " + array.indexOf("B"));
     System.out.println("Last index of D: " + array.lastIndexOf("D"));
     System.out.println("Element count: " + array.elementCount());
-    System.out.println();
-  }
-
-  private static void runDynamicOneDimensionalExample() {
-    System.out.println("==============================");
-    System.out.println("DYNAMIC 1D ARRAY");
-    System.out.println("==============================");
-
-    NonPrimitiveDynamic1DArray<String> array = new NonPrimitiveDynamic1DArray<>(String.class, 4);
-
-    array.add(0, "One");
-    array.add(1, "Two");
-    array.add(2, "Three");
-    array.add(3, "Four");
-
-    System.out.println("After adding values inside current capacity:");
-    array.print();
-    System.out.println("Removing index 1...");
-    array.remove(1);
-    array.print();
-    System.out.println("Element count after remove: " + array.elementCount());
     System.out.println();
   }
 
@@ -84,4 +64,3 @@ public class ArraysMain {
     System.out.println();
   }
 }
-

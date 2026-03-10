@@ -1,4 +1,4 @@
-package existing.data.structures.arrays;
+package custom.data.structures.arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
