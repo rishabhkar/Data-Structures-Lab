@@ -136,7 +136,7 @@ public class DoublyLinkedList<T> {
     }
 
     // Case 5: If previous node is invalid -> Index is outside the list -> Throw exception
-    if (previousNode == null && previousNode.next == null) {
+    if (previousNode == null || previousNode.next == null) {
       throw new IndexOutOfBoundsException("Index passed is not correct");
     }
 
@@ -200,11 +200,13 @@ public class DoublyLinkedList<T> {
       throw new IllegalArgumentException("Head pointer is empty.");
     }
 
-    // Case 2: If value is present at head -> Remove head logic runs
+    // Case 2: If value is present at head -> remove head and return next
     if (head.node.equals(value)) {
-      head.next.previous = null;
-      head = null;
-      return head;
+      DoublyLinkedList<T> newHead = head.next;
+      if (newHead != null) {
+        newHead.previous = null;
+      }
+      return newHead;
     }
 
     DoublyLinkedList<T> temporaryNode = head;
@@ -267,7 +269,12 @@ public class DoublyLinkedList<T> {
       throw new IllegalArgumentException("Head pointer is empty.");
     }
 
-    // Case 2: Move head to the next node and clear old links
+    // Case 2: If only one node exists -> return null
+    if (head.next == null) {
+      return null;
+    }
+
+    // Case 3: Move head to the next node and clear old links
     DoublyLinkedList<T> temporaryNode = head;
     head = head.next;
     temporaryNode.next = null;

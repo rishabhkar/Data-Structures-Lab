@@ -69,20 +69,32 @@ public class DoublyCircularLinkedList<T> {
       throw new IllegalArgumentException("Parameters passed are not correct");
     }
 
-    // Case 2: Normal insert at the beginning of the circular list
-    DoublyCircularLinkedList<T> newNode = new DoublyCircularLinkedList<>(value);
-    DoublyCircularLinkedList<T> temporaryNode = head;
-
-    while (temporaryNode.next != head) {
-      temporaryNode.next = newNode;
-      newNode.previous = temporaryNode;
-
-      newNode.next = head;
-      head.previous = newNode;
-      head = newNode;
+    // Case 2: If head is null -> create single-node circular list
+    if (head == null) {
+      DoublyCircularLinkedList<T> newNode = new DoublyCircularLinkedList<>(value);
+      newNode.next = newNode;
+      newNode.previous = newNode;
+      return newNode;
     }
 
-    return head;
+    // Case 3: Normal insert at the beginning of the circular list
+    DoublyCircularLinkedList<T> newNode = new DoublyCircularLinkedList<>(value);
+    DoublyCircularLinkedList<T> tail = head.previous;
+
+    if (tail == null) {
+      // recover tail if previous links were not established
+      tail = head;
+      while (tail.next != null && tail.next != head) {
+        tail = tail.next;
+      }
+    }
+
+    newNode.next = head;
+    newNode.previous = tail;
+    head.previous = newNode;
+    tail.next = newNode;
+
+    return newNode;
   }
 
   /**
@@ -100,22 +112,29 @@ public class DoublyCircularLinkedList<T> {
       throw new IllegalArgumentException("Parameters passed are not correct");
     }
 
-    // Case 2: If head passed is null -> No Linked ListImplementation exists yet -> Create and return single node ListImplementation
+    // Case 2: If head is null -> create single-node circular list
     if (head == null) {
-      return new DoublyCircularLinkedList<>(value);
+      DoublyCircularLinkedList<T> newNode = new DoublyCircularLinkedList<>(value);
+      newNode.next = newNode;
+      newNode.previous = newNode;
+      return newNode;
     }
 
     // Case 3: Normal insert at the end of the circular list
     DoublyCircularLinkedList<T> newNode = new DoublyCircularLinkedList<>(value);
-    DoublyCircularLinkedList<T> temporaryNode = head;
+    DoublyCircularLinkedList<T> tail = head.previous;
 
-    while (temporaryNode.next != head) {
-      temporaryNode.next = newNode;
-      newNode.previous = temporaryNode;
-
-      newNode.next = head;
-      head.previous = newNode;
+    if (tail == null) {
+      tail = head;
+      while (tail.next != null && tail.next != head) {
+        tail = tail.next;
+      }
     }
+
+    newNode.next = head;
+    newNode.previous = tail;
+    tail.next = newNode;
+    head.previous = newNode;
 
     return head;
   }
@@ -156,14 +175,12 @@ public class DoublyCircularLinkedList<T> {
     int counter = 0;
     DoublyCircularLinkedList<T> previousNode = head;
 
-    while (counter < index - 1 && previousNode != null) {
+    while (counter < index - 1) {
       previousNode = previousNode.next;
       counter++;
-    }
-
-    // Case 5: If previous node is invalid -> Index is outside the list -> Throw exception
-    if (previousNode == null && previousNode.next == null) {
-      throw new IndexOutOfBoundsException("Index passed is not correct");
+      if (previousNode == null || previousNode == head) {
+        throw new IndexOutOfBoundsException("Index passed is not correct");
+      }
     }
 
     // Case 6: Normal insert in the middle or near the end of the list
@@ -183,12 +200,19 @@ public class DoublyCircularLinkedList<T> {
    */
   public void printIterative(DoublyCircularLinkedList<T> head) {
 
-    DoublyCircularLinkedList<T> temporaryNode = head;
-
-    while (temporaryNode != null) {
-      System.out.print(temporaryNode.node + ((temporaryNode.next != null) ? "->" : ""));
-      temporaryNode = temporaryNode.next;
+    if (head == null) {
+      System.out.println();
+      return;
     }
+
+    DoublyCircularLinkedList<T> temporaryNode = head;
+    do {
+      System.out.print(temporaryNode.node + "->");
+      temporaryNode = temporaryNode.next;
+      if (temporaryNode == null) {
+        throw new IllegalStateException("Doubly Linked ListImplementation is not circular");
+      }
+    } while (temporaryNode != head);
     System.out.println();
   }
 
@@ -230,9 +254,25 @@ public class DoublyCircularLinkedList<T> {
       throw new IllegalArgumentException("Head pointer is empty.");
     }
 
-    // Case 2: If value is present at head -> Remove head and return next node
+    // Case 2: If value is present at head
     if (head.node.equals(value)) {
-      return head.next;
+      // single-node circular list
+      if (head.next == head) {
+        return null;
+      }
+
+      DoublyCircularLinkedList<T> newHead = head.next;
+      DoublyCircularLinkedList<T> tail = head.previous;
+      if (tail == null) {
+        tail = head;
+        while (tail.next != null && tail.next != head) {
+          tail = tail.next;
+        }
+      }
+
+      tail.next = newHead;
+      newHead.previous = tail;
+      return newHead;
     }
 
     DoublyCircularLinkedList<T> temporaryNode = head;
@@ -266,20 +306,27 @@ public class DoublyCircularLinkedList<T> {
     }
 
     // Case 2: If only one node exists -> Return null
-    if (head.next == null) {
+    if (head.next == head) {
       return null;
     }
 
-    // Case 3: Parse till the second last node and disconnect the last node
-    DoublyCircularLinkedList<T> temporaryNode = head;
-
-    while (temporaryNode.next.next != head) {
-      temporaryNode = temporaryNode.next;
+    DoublyCircularLinkedList<T> tail = head.previous;
+    if (tail == null) {
+      tail = head;
+      while (tail.next != null && tail.next != head) {
+        tail = tail.next;
+      }
     }
-
-    head.previous = temporaryNode;
-    temporaryNode.next = head;
-
+    DoublyCircularLinkedList<T> newTail = tail.previous;
+    if (newTail == null) {
+      // recover previous if missing
+      newTail = head;
+      while (newTail.next != null && newTail.next != tail) {
+        newTail = newTail.next;
+      }
+    }
+    newTail.next = head;
+    head.previous = newTail;
     return head;
   }
 
@@ -297,18 +344,23 @@ public class DoublyCircularLinkedList<T> {
       throw new IllegalArgumentException("Head pointer is empty.");
     }
 
-    // Case 2: Move head to the next node and reconnect the tail
-    DoublyCircularLinkedList<T> temporaryNode = head;
-
-    while(temporaryNode.next != head) {
-      temporaryNode = temporaryNode.next;
+    // Case 2: If only one node exists -> Return null
+    if (head.next == head) {
+      return null;
     }
 
-    head = head.next;
-    temporaryNode.next = head;
-    head.previous = temporaryNode;
+    DoublyCircularLinkedList<T> tail = head.previous;
+    if (tail == null) {
+      tail = head;
+      while (tail.next != null && tail.next != head) {
+        tail = tail.next;
+      }
+    }
 
-    return head;
+    DoublyCircularLinkedList<T> newHead = head.next;
+    tail.next = newHead;
+    newHead.previous = tail;
+    return newHead;
   }
 
   /**
@@ -334,28 +386,31 @@ public class DoublyCircularLinkedList<T> {
       throw new IndexOutOfBoundsException("Index passed is not correct");
     }
 
-    // Case 3: If index is zero -> Remove head and return next node
+    // Case 3: If index is zero -> Remove head
     if (index == 0) {
-      return head.next;
+      return deleteFromBeginning(head);
     }
 
     // Case 4: Parse till the node just before the target index
     int counter = 0;
     DoublyCircularLinkedList<T> previousNode = head;
 
-    while (counter < index - 1 && previousNode != null) {
+    while (counter < index - 1) {
       previousNode = previousNode.next;
       counter++;
+      if (previousNode == null || previousNode == head) {
+        throw new IndexOutOfBoundsException("Index passed is not correct");
+      }
     }
 
-    // Case 5: If node before target is invalid -> Throw exception
-    if (previousNode == null || previousNode.next == null) {
+    if (previousNode.next == null || previousNode.next == head) {
       throw new IndexOutOfBoundsException("Index passed is not correct");
     }
 
-    // Case 6: Normal delete from the middle or end of the list
-    previousNode.next.next.previous = previousNode;
-    previousNode.next = previousNode.next.next;
+    DoublyCircularLinkedList<T> toDelete = previousNode.next;
+    DoublyCircularLinkedList<T> after = toDelete.next;
+    previousNode.next = after;
+    after.previous = previousNode;
 
     return head;
   }
@@ -368,22 +423,26 @@ public class DoublyCircularLinkedList<T> {
    */
   public DoublyCircularLinkedList<T> reverse(DoublyCircularLinkedList<T> head) {
 
-    // Case 1: Usual case of reversing a circular list
-    DoublyCircularLinkedList<T> previousNode = head;
-    DoublyCircularLinkedList<T> currentNode = head.next;
-
-    while (currentNode != head) {
-      // Assign a new pointer to point towards next node
-      DoublyCircularLinkedList<T> nextNode = currentNode.next;
-
-      // Change current node pointers
-      currentNode.next = previousNode;
-      currentNode.previous = nextNode;
-
-      previousNode = currentNode;
-      currentNode = nextNode;
+    if (head == null) {
+      return null;
+    }
+    if (head.next == head) {
+      return head;
     }
 
-    return previousNode;
+    DoublyCircularLinkedList<T> current = head;
+    do {
+      DoublyCircularLinkedList<T> nextNode = current.next;
+      current.next = current.previous;
+      current.previous = nextNode;
+      current = nextNode;
+      if (current == null) {
+        throw new IllegalStateException("Doubly Linked ListImplementation is not circular");
+      }
+    } while (current != head);
+
+    // After swapping links, the previous pointer of the original head points to the old next,
+    // and the next pointer points to the old previous (old tail). That old tail is the new head.
+    return head.next;
   }
 }

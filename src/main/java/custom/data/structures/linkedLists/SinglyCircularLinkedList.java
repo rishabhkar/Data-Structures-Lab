@@ -52,21 +52,27 @@ public class SinglyCircularLinkedList<T> {
       throw new IllegalArgumentException("Parameters passed are not correct");
     }
 
+    // If head is null, create a single-node circular list
+    if (head == null) {
+      SinglyCircularLinkedList<T> newNode = new SinglyCircularLinkedList<>(value);
+      newNode.next = newNode;
+      return newNode;
+    }
+
     SinglyCircularLinkedList<T> newNode = new SinglyCircularLinkedList<>(value);
 
-    SinglyCircularLinkedList<T> temporaryNode = head.next;
-    while(!temporaryNode.next.equals(head)) {
-      temporaryNode = temporaryNode.next;
+    // Find tail (node whose next points to head)
+    SinglyCircularLinkedList<T> temporaryNode = head;
+    while (temporaryNode.next != head) {
       if (temporaryNode.next == null) {
         throw new IllegalStateException("Singly Linked ListImplementation is not circular");
       }
+      temporaryNode = temporaryNode.next;
     }
 
     temporaryNode.next = newNode;
     newNode.next = head;
-    head = newNode;
-
-    return head;
+    return newNode;
   }
 
   /**
@@ -133,14 +139,13 @@ public class SinglyCircularLinkedList<T> {
     int counter = 0;
     SinglyCircularLinkedList<T> previousNode = head;
 
-    while (counter < index - 1 && previousNode != null) {
+    // Walk index-1 steps but never loop back to head (would mean index too large)
+    while (counter < index - 1) {
       previousNode = previousNode.next;
       counter++;
-    }
-
-    // Case 5: If previous node is invalid -> Index is outside the list -> Throw exception
-    if (previousNode == null) {
-      throw new IndexOutOfBoundsException("Index passed is not correct");
+      if (previousNode == null || previousNode == head) {
+        throw new IndexOutOfBoundsException("Index passed is not correct");
+      }
     }
 
     // Case 6: Normal insert in the middle or near the end of the list
@@ -157,12 +162,19 @@ public class SinglyCircularLinkedList<T> {
    */
   public void printIterative(SinglyCircularLinkedList<T> head) {
 
-    SinglyCircularLinkedList<T> temporaryNode = head;
-
-    while (temporaryNode.next != head) {
-      System.out.print(temporaryNode.node + ((temporaryNode.next != null) ? "->" : ""));
-      temporaryNode = temporaryNode.next;
+    if (head == null) {
+      System.out.println();
+      return;
     }
+
+    SinglyCircularLinkedList<T> temporaryNode = head;
+    do {
+      System.out.print(temporaryNode.node + ((temporaryNode.next != head) ? "->" : ""));
+      temporaryNode = temporaryNode.next;
+      if (temporaryNode == null) {
+        throw new IllegalStateException("Singly Linked ListImplementation is not circular");
+      }
+    } while (temporaryNode != head);
     System.out.println();
   }
 
@@ -202,9 +214,25 @@ public class SinglyCircularLinkedList<T> {
       throw new IllegalArgumentException("Head pointer is empty.");
     }
 
-    // Case 2: If value is present at head -> Remove head and return next node
+    // Case 2: If value is present at head
     if (head.node.equals(value)) {
-      return head.next;
+      // Single-node circular list
+      if (head.next == head) {
+        return null;
+      }
+
+      // Find tail and move head
+      SinglyCircularLinkedList<T> tail = head;
+      while (tail.next != head) {
+        if (tail.next == null) {
+          throw new IllegalStateException("Singly Linked ListImplementation is not circular");
+        }
+        tail = tail.next;
+      }
+
+      SinglyCircularLinkedList<T> newHead = head.next;
+      tail.next = newHead;
+      return newHead;
     }
 
     SinglyCircularLinkedList<T> temporaryNode = head;
@@ -236,7 +264,7 @@ public class SinglyCircularLinkedList<T> {
     }
 
     // Case 2: If only one node exists -> Return null
-    if (head.next == null) {
+    if (head.next == head) {
       return null;
     }
 
@@ -265,17 +293,24 @@ public class SinglyCircularLinkedList<T> {
       throw new IllegalArgumentException("Head pointer is empty.");
     }
 
-    // Case 2: Parse till the tail node and move head to the next node
+    // Case 2: Single-node circular list
+    if (head.next == head) {
+      return null;
+    }
+
+    // Case 3: Parse till the tail node and move head to the next node
     SinglyCircularLinkedList<T> temporaryNode = head;
 
     while (temporaryNode.next != head) {
+      if (temporaryNode.next == null) {
+        throw new IllegalStateException("Singly Linked ListImplementation is not circular");
+      }
       temporaryNode = temporaryNode.next;
     }
 
-    temporaryNode.next = head.next;
-    head = head.next;
-
-    return head;
+    SinglyCircularLinkedList<T> newHead = head.next;
+    temporaryNode.next = newHead;
+    return newHead;
   }
 
   /**
@@ -298,19 +333,18 @@ public class SinglyCircularLinkedList<T> {
     }
 
     if (index == 0) {
-      return head.next;
+      return deleteFromBeginning(head);
     }
 
     int counter = 0;
     SinglyCircularLinkedList<T> previousNode = head;
 
-    while (counter < index - 1 && previousNode != null) {
+    while (counter < index - 1) {
       previousNode = previousNode.next;
       counter++;
-    }
-
-    if (previousNode == null || previousNode.next == null) {
-      throw new IndexOutOfBoundsException("Index passed is not correct");
+      if (previousNode == null || previousNode == head) {
+        throw new IndexOutOfBoundsException("Index passed is not correct");
+      }
     }
 
     previousNode.next = previousNode.next.next;
@@ -325,17 +359,25 @@ public class SinglyCircularLinkedList<T> {
    */
   public SinglyCircularLinkedList<T> reverse(SinglyCircularLinkedList<T> head) {
 
+    if (head == null) {
+      return null;
+    }
+    if (head.next == head) {
+      return head;
+    }
+
     SinglyCircularLinkedList<T> previousNode = head;
     SinglyCircularLinkedList<T> currentNode = head.next;
 
     while (currentNode != head) {
-
       SinglyCircularLinkedList<T> nextNode = currentNode.next;
       currentNode.next = previousNode;
       previousNode = currentNode;
       currentNode = nextNode;
     }
 
+    // close the circle and return new head
+    head.next = previousNode;
     return previousNode;
   }
 }
