@@ -47,8 +47,8 @@ class AdjacencyListsTests {
     @Test
     @DisplayName("Weighted undirected adjacency list should store node and weight")
     void weightedUndirectedAdjacencyListStoresNodeAndWeight() {
-        ArrayList<ArrayList<weightedRelation>> result = adjacencyLists.designWeightedUndirectedAdjacencyList(new int[][]{{0, 1, 9}});
-        weightedRelation relation = result.get(0).get(0);
+        ArrayList<ArrayList<WeightedRelation>> result = adjacencyLists.designWeightedUndirectedAdjacencyList(new int[][]{{0, 1, 9}});
+        WeightedRelation relation = result.get(0).get(0);
         printValue("Weighted relation", relation);
         assertEquals(1, relation.node());
         assertEquals(9, relation.weight());

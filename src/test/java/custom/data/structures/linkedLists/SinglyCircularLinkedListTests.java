@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Singly Circular Linked List Tests")
+@DisplayName("Singly Circular Linked ListImplementation Tests")
 class SinglyCircularLinkedListTests {
 
     private SinglyCircularLinkedList<String> helper;
@@ -73,7 +73,7 @@ class SinglyCircularLinkedListTests {
             steps++;
 
             if (current == null || steps > expectedCount) {
-                fail("List is not circular as expected");
+                fail("ListImplementation is not circular as expected");
             }
         } while (current != head);
 

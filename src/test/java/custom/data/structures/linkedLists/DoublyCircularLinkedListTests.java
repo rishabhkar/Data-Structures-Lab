@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Doubly Circular Linked List Tests")
+@DisplayName("Doubly Circular Linked ListImplementation Tests")
 class DoublyCircularLinkedListTests {
 
     private DoublyCircularLinkedList<String> helper;
@@ -84,7 +84,7 @@ class DoublyCircularLinkedListTests {
             steps++;
 
             if (current == null || steps > expectedCount) {
-                fail("List is not circular as expected");
+                fail("ListImplementation is not circular as expected");
             }
         } while (current != head);
 

@@ -100,7 +100,7 @@ public class DoublyCircularLinkedList<T> {
       throw new IllegalArgumentException("Parameters passed are not correct");
     }
 
-    // Case 2: If head passed is null -> No Linked List exists yet -> Create and return single node List
+    // Case 2: If head passed is null -> No Linked ListImplementation exists yet -> Create and return single node ListImplementation
     if (head == null) {
       return new DoublyCircularLinkedList<>(value);
     }
@@ -148,7 +148,7 @@ public class DoublyCircularLinkedList<T> {
       return insertAtBeginning(head, value);
     }
 
-    // Case 4: If head is null -> List does not exist -> Throw exception
+    // Case 4: If head is null -> ListImplementation does not exist -> Throw exception
     if (head == null) {
       throw new IndexOutOfBoundsException("Index passed is not correct");
     }

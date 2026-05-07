@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Linked List Tests")
+@DisplayName("Linked ListImplementation Tests")
 class LinkedListTests {
 
     private LinkedList<String> helper;
@@ -57,7 +57,7 @@ class LinkedListTests {
     @DisplayName("Insert at beginning should return new head")
     void insertAtBeginningReturnsNewHead() {
         LinkedList<String> head = helper.insertAtBeginning(helper, "Start");
-        printValue("List after insert at beginning", toValues(head));
+        printValue("ListImplementation after insert at beginning", toValues(head));
         assertEquals(List.of("Start", "A"), toValues(head));
     }
 
@@ -65,7 +65,7 @@ class LinkedListTests {
     @DisplayName("Insert at beginning should allow empty head")
     void insertAtBeginningAllowsEmptyHead() {
         LinkedList<String> head = helper.insertAtBeginning(null, "Only");
-        printValue("List after insert on empty head", toValues(head));
+        printValue("ListImplementation after insert on empty head", toValues(head));
         assertEquals(List.of("Only"), toValues(head));
     }
 
@@ -73,7 +73,7 @@ class LinkedListTests {
     @DisplayName("Insert at end should append value")
     void insertAtEndAppendsValue() {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
-        printValue("List after insert at end", toValues(head));
+        printValue("ListImplementation after insert at end", toValues(head));
         assertEquals(List.of("A", "B"), toValues(head));
     }
 
@@ -81,7 +81,7 @@ class LinkedListTests {
     @DisplayName("Insert at end should allow empty head")
     void insertAtEndAllowsEmptyHead() {
         LinkedList<String> head = helper.insertAtEnd(null, "Only");
-        printValue("List after insert at end on empty head", toValues(head));
+        printValue("ListImplementation after insert at end on empty head", toValues(head));
         assertEquals(List.of("Only"), toValues(head));
     }
 
@@ -89,7 +89,7 @@ class LinkedListTests {
     @DisplayName("Insert at index zero should behave like insert at beginning")
     void insertAtIndexZeroInsertsAtBeginning() {
         LinkedList<String> head = helper.insertAtIndex(helper, "Start", 0);
-        printValue("List after insert at index zero", toValues(head));
+        printValue("ListImplementation after insert at index zero", toValues(head));
         assertEquals(List.of("Start", "A"), toValues(head));
     }
 
@@ -98,7 +98,7 @@ class LinkedListTests {
     void insertAtIndexInMiddle() {
         LinkedList<String> head = helper.insertAtEnd(helper, "C");
         head = helper.insertAtIndex(head, "B", 1);
-        printValue("List after insert at middle", toValues(head));
+        printValue("ListImplementation after insert at middle", toValues(head));
         assertEquals(List.of("A", "B", "C"), toValues(head));
     }
 
@@ -107,7 +107,7 @@ class LinkedListTests {
     void insertAtLastIndexAppendsCorrectly() {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.insertAtIndex(head, "C", 2);
-        printValue("List after insert at last index", toValues(head));
+        printValue("ListImplementation after insert at last index", toValues(head));
         assertEquals(List.of("A", "B", "C"), toValues(head));
     }
 
@@ -168,7 +168,7 @@ class LinkedListTests {
     void deleteByValueRemovesHead() {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.deleteByValue(head, "A");
-        printValue("List after deleting head by value", toValues(head));
+        printValue("ListImplementation after deleting head by value", toValues(head));
         assertEquals(List.of("B"), toValues(head));
     }
 
@@ -178,7 +178,7 @@ class LinkedListTests {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.insertAtEnd(head, "C");
         head = helper.deleteByValue(head, "B");
-        printValue("List after deleting middle value", toValues(head));
+        printValue("ListImplementation after deleting middle value", toValues(head));
         assertEquals(List.of("A", "C"), toValues(head));
     }
 
@@ -187,7 +187,7 @@ class LinkedListTests {
     void deleteByValueKeepsListWhenValueIsMissing() {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.deleteByValue(head, "Missing");
-        printValue("List after deleting missing value", toValues(head));
+        printValue("ListImplementation after deleting missing value", toValues(head));
         assertEquals(List.of("A", "B"), toValues(head));
     }
 
@@ -203,7 +203,7 @@ class LinkedListTests {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.insertAtEnd(head, "C");
         head = helper.deleteFromEnd(head);
-        printValue("List after delete from end", toValues(head));
+        printValue("ListImplementation after delete from end", toValues(head));
         assertEquals(List.of("A", "B"), toValues(head));
     }
 
@@ -220,7 +220,7 @@ class LinkedListTests {
     void deleteFromBeginningRemovesFirstNode() {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.deleteFromBeginning(head);
-        printValue("List after delete from beginning", toValues(head));
+        printValue("ListImplementation after delete from beginning", toValues(head));
         assertEquals(List.of("B"), toValues(head));
     }
 
@@ -229,7 +229,7 @@ class LinkedListTests {
     void deleteAtIndexZeroRemovesHead() {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.deleteAtIndex(head, null, 0);
-        printValue("List after delete at index zero", toValues(head));
+        printValue("ListImplementation after delete at index zero", toValues(head));
         assertEquals(List.of("B"), toValues(head));
     }
 
@@ -239,7 +239,7 @@ class LinkedListTests {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.insertAtEnd(head, "C");
         head = helper.deleteAtIndex(head, null, 1);
-        printValue("List after delete at middle index", toValues(head));
+        printValue("ListImplementation after delete at middle index", toValues(head));
         assertEquals(List.of("A", "C"), toValues(head));
     }
 
@@ -255,7 +255,7 @@ class LinkedListTests {
         LinkedList<String> head = helper.insertAtEnd(helper, "B");
         head = helper.insertAtEnd(head, "C");
         head = helper.reverse(head);
-        printValue("List after reverse", toValues(head));
+        printValue("ListImplementation after reverse", toValues(head));
         assertEquals(List.of("C", "B", "A"), toValues(head));
     }
 

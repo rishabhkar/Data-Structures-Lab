@@ -115,7 +115,7 @@ public class LinkedList<T> {
       return insertAtBeginning(head, value);
     }
 
-    // Case 4: If head is null -> List does not exist -> Throw exception
+    // Case 4: If head is null -> ListImplementation does not exist -> Throw exception
     if (head == null) {
       throw new IndexOutOfBoundsException("Index passed is not correct");
     }

@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Doubly Linked List Tests")
+@DisplayName("Doubly Linked ListImplementation Tests")
 class DoublyLinkedListTests {
 
     private DoublyLinkedList<String> helper;
