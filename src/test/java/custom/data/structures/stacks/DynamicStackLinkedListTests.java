@@ -7,7 +7,7 @@ import org.junit.jupiter.api.TestInfo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Dynamic Stack Linked List Tests")
+@DisplayName("Dynamic Stack Linked ListImplementation Tests")
 class DynamicStackLinkedListTests {
 
     private DynamicStackLinkedList helper;

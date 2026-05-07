@@ -6,7 +6,7 @@ import java.util.*;
  * Small record used in weighted adjacency lists.
  * It stores the target node and the edge weight.
  */
-record weightedRelation(Integer node, Integer weight) {}
+record WeightedRelation(Integer node, Integer weight) {}
 
 /**
  * Builds adjacency list representations for graphs.
@@ -15,7 +15,7 @@ record weightedRelation(Integer node, Integer weight) {}
 public class AdjacencyLists {
 
   ArrayList<ArrayList<Integer>> adjList;
-  ArrayList<ArrayList<weightedRelation>> weightedAdjList;
+  ArrayList<ArrayList<WeightedRelation>> weightedAdjList;
 
   /**
    * Creates empty adjacency list containers.
@@ -100,9 +100,9 @@ public class AdjacencyLists {
    * Prints the weighted adjacency list.
    */
   public void printWeightedAdjacencyList() {
-    for (ArrayList<weightedRelation> list : weightedAdjList) {
+    for (ArrayList<WeightedRelation> list : weightedAdjList) {
       System.out.print("{");
-      for (weightedRelation rel : list) {
+      for (WeightedRelation rel : list) {
         System.out.print(rel.node() + "(" + rel.weight() + ")  ");
       }
       System.out.print("}");
@@ -115,7 +115,7 @@ public class AdjacencyLists {
    * @param graph weighted edge list input
    * @return generated weighted adjacency list
    */
-  public ArrayList<ArrayList<weightedRelation>> designWeightedUndirectedAdjacencyList(
+  public ArrayList<ArrayList<WeightedRelation>> designWeightedUndirectedAdjacencyList(
       int[][] graph) {
 
     int max = 0;
@@ -127,14 +127,14 @@ public class AdjacencyLists {
     }
 
     for (int i = 0; i <= max + 1; i++) {
-      weightedAdjList.add(new ArrayList<weightedRelation>());
+      weightedAdjList.add(new ArrayList<WeightedRelation>());
     }
 
     for (int i = 0; i < graph.length; i++) {
-      weightedRelation weightedNode = new weightedRelation(graph[i][1], graph[i][2]);
+      WeightedRelation weightedNode = new WeightedRelation(graph[i][1], graph[i][2]);
       weightedAdjList.get(graph[i][0]).add(weightedNode);
 
-      weightedNode = new weightedRelation(graph[i][0], graph[i][2]);
+      weightedNode = new WeightedRelation(graph[i][0], graph[i][2]);
       weightedAdjList.get(graph[i][1]).add(weightedNode);
     }
 

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.TestInfo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Custom Array List Tests")
+@DisplayName("Custom Array ListImplementation Tests")
 class ArrayListTests {
 
     private ArrayList list;
