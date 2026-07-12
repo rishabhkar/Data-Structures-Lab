@@ -40,7 +40,7 @@ This track does **not** contain handwritten implementations of dynamic arrays, l
 
 - ✅ `arrays/` — native Java arrays and array-oriented practice
 - ⬜ `lists/` — Java list interfaces and implementations
-- ⬜ `queuesanddeques/` — queue-related Java APIs
+- ⬜ `queues/` — queue-related Java APIs
 - ⬜ `maps/` — Java map interfaces and implementations
 
 ## Notes on tree and graph work
