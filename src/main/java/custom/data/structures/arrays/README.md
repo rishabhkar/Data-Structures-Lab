@@ -35,7 +35,7 @@ This folder is for **array structures implemented from scratch**.
 ## Current source mapping
 
 - `src/main/java/custom/data/structures/arrays/NonPrimitiveDynamic1DArray.java`
-- `src/main/java/custom/data/structures/arrays/Main.java`
+- `src/main/java/custom/data/structures/arrays/ArraysMain.java`
 - `src/test/java/custom/data/structures/arrays/NonPrimitiveDynamic1DArrayTests.java`
 
 ## What will go here later

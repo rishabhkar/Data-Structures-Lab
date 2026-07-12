@@ -14,7 +14,7 @@ It focuses on:
 ## Current coverage
 
 - ✅ custom dynamic array in `arrays/`
-- ✅ custom array-backed list in `list/`
+- ✅ custom array-backed list in `lists/`
 - ✅ singly linked list
 - ✅ doubly linked list
 - ✅ singly circular linked list
@@ -33,19 +33,23 @@ It focuses on:
 ## Folder layout
 
 - `arrays/` — custom dynamic arrays and future sparse-array work
-- `linkedLists/` — singly, doubly, and circular linked lists
-- `list/` — current custom array-backed list implementation
+- `linkedlists/` — singly, doubly, and circular linked lists
+- `lists/` — current custom array-backed list implementation
 - `stacks/` — fixed and linked-list-backed stacks
-- `queues/` — simple queues, deques, circular queues, and ring-buffer work
-- `trees/` — tree families, BSTs, balancing, heaps, tries, and related structures
+- `queues/` — simple queues and deques
+- `trees/` — binary trees and binary search trees
 - `graphs/` — graph representations, traversals, and graph algorithms
 - `hashing/` — custom hash tables and hashing strategies
+
+Advanced and self-balancing variants (AVL, red-black, tries, segment / Fenwick trees, heaps,
+ring buffers, hash-table strategies, skip list, bloom filter, caches) live in the separate
+`advanced/data/structures/` track.
 
 ## Current source mapping
 
 - `src/main/java/custom/data/structures/arrays/` — dynamic array code
-- `src/main/java/custom/data/structures/linkedLists/` — linked list code
-- `src/main/java/custom/data/structures/list/` — array-backed list code
+- `src/main/java/custom/data/structures/linkedlists/` — linked list code
+- `src/main/java/custom/data/structures/lists/` — array-backed list code
 - `src/main/java/custom/data/structures/stacks/` — fixed and linked-list stack code
 - `src/main/java/custom/data/structures/queues/` — simple queue and deque code
 - `src/main/java/custom/data/structures/trees/` — binary tree and BST code
